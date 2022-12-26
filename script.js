@@ -9,11 +9,13 @@ const progressContainer = document.getElementById('progress-container');
 const title = document.getElementById('songTitle');
 const cover = document.getElementById('cover');
 
+
 // Song titles
-const songs = ['dream','melody','peace', 'wishes', 'taylorSwift' , 'reputatiob'];
+const songs = ['Lost Myself In Loving You','wishes','dream', 'would be better','melody','peace'];
+max = songs.length 
 
 // Keep track of song
-let songIndex = 1;
+let songIndex = 0;
 
 // Initially load song details into DOM
 loadSong(songs[songIndex]);
@@ -47,11 +49,9 @@ function pauseSong() {
 function prevSong() {
   songIndex--;
 
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
-  }
+  songIndex = songIndex > 0 ? songIndex : max -1 ; 
 
-  loadSong(songs[songIndex]);
+  loadSong(songs[songIndex%max]);
 
   playSong();
 }
@@ -59,12 +59,8 @@ function prevSong() {
 // Next song
 function nextSong() {
   songIndex++;
-
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
-  }
-
-  loadSong(songs[songIndex]);
+  console.log(songIndex%max, max, "next is ")
+  loadSong(songs[songIndex%max]);
 
   playSong();
 }
@@ -107,4 +103,4 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 // Song ends
-audio.addEventListener('ended', nextSong);
+//audio.addEventListener('ended', nextSong);
