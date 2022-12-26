@@ -11,7 +11,7 @@ const cover = document.getElementById('cover');
 
 
 // Song titles
-const songs = ['Lost Myself In Loving You','wishes','dream', 'would be better','melody','peace'];
+const songs = ['Lost Myself In Loving You','wishes', 'would be better','dream','melody','peace'];
 max = songs.length 
 
 // Keep track of song
